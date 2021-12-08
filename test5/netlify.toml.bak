@@ -1,0 +1,37 @@
+[build]
+  command = "npm run netlify-build"
+  publish = "build/"
+  functions = "functions/"
+
+[build.environment]
+  # suppress failures for for build warnings
+  CI = "false"
+
+[template.environment]
+  DAILY_API_KEY = "Replace with Daily API key"
+  
+
+[[redirects]]
+  # Proxies the Daily /rooms endpoint, POST will create a room and a GET will return a list 
+  # The placeholder below gets replaced when the build command runs
+  # as suggested here: https://docs.netlify.com/configure-builds/file-based-configuration/#inject-environment-variable-values
+  # IF YOU RUN THIS COMMAND LOCALLY DO NOT COMMIT THIS FILE WITH THE API KEY IN IT
+  # MAKE SURE THE PLACEHOLDER TEXT IS THERE WHENEVER YOU ARE DONE TESTING LOCALLY
+  from = "/api/rooms"
+  to = "https://api.daily.co/v1/rooms"
+  status = 200
+  force = true
+  headers = {Authorization = "Bearer 54d0be1deb0e5ecfebf61207a47cf13689c18a2fd4a695a41b13622d61e5a756"}
+
+# The following redirect is intended for use with most SPAs that handle routing internally.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+    for = "/livestorm-test/library"
+    [headers.values]
+        Basic-Auth = "Livestorm:Livestorm"
+    
+  

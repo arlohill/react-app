@@ -1,0 +1,151 @@
+
+
+                {/* <!-- Play recordings for users to practice Seconding --> */}
+          <div style={{position:'absolute',left:'50px',top:'12px',textAlign: 'center', flexDirection: 'column', justifyContent: 'flex-end'}}>
+                
+                    <span style={{bottom: '0px', color: 'green', fontSize: '16px', fontFamily:'Verdana, Geneva, Tahoma, sans-serif'}}>
+                    <button onClick={togglePractice} id='play-pause'>{playButtonText}</button>
+                    </span>
+
+                   
+       
+                    {/* Recordings for Seconding */}
+                    <div style={{height:'30px'}}>
+                    <form action = ''>
+                        <fieldset style={{border:'none'}}>
+                        <select id = 'practice-audio' onChange={(e) => {setTargetRecording (e.target.value); console.log('***CHANGED TO ' + e.target.value)}}
+                        style={{outline:'none', borderRadius: '20px', height:'20px', width:'130px',  cursor:'pointer', backgroundColor:'green', color:'white'}}>
+                        <option value = 'monologue1'>What makes CEB different (mono)</option>    
+                        {/* ///IF DEFAULT VALUE CHANGES ABOVE, ALSO HAVE TO CHANGE IT IN setTargetRecording HOOK */}
+                        <option value = 'monologue2'>Searching for PAGA Claims (mono)</option>
+                        <option value = 'monologue3'>Audio Engineer (mono)</option>
+                        <option value = 'monologue4'>IBM Garage (mono)</option>
+                        <option value = 'monologue5'>Livestorm 1 (mono)</option>
+                        <option value = 'monologue6'>Livestorm 2 (mono)</option>
+                    </select>
+                    </fieldset>
+                    </form>
+                </div> 
+        </div>
+
+        {/* END PRACTICE AUDIO */}
+
+       
+
+
+            
+               
+
+
+                    {/* <!-- start / stop recording --> */}
+                {/* <div style={{flexGrow:'1', textAlign: 'center'}}>
+                <label class="switch" style={{position:'relative', height:'30px', width:'60px', cursor:'pointer', bottom:'-30px'}}>
+                    <input type="checkbox" id='recording' />
+                    <span class="slider round red"></span>
+                </label>
+                <p style={{position:'relative', bottom: '-15px'}}>Recording</p>
+            </div> */}
+
+            {/* <!-- Assign who will be the participants + actors --> */}
+    <div id='role-assignments' class='role-assignments' style={{}}>
+
+          {/* (<span style={{color:'red'}}>Person A:</span> + <span style={{color:'grey'}}>played by:</span>) */}
+
+          <div className='column'>
+
+              <div className='RoleName-and-Dropdown'>
+                      <div className='RoleName'>
+                        <p>
+                          Person A:
+                        </p>
+                      </div>
+
+                      <div className='dropdown'>
+                          <p>
+                            <form>
+                              <select className='selector' id="Participant1" onChange={handleRoleChange}>
+                                <option value={null}></option>
+                                {window.userList && window.userList.length>0 && window.userList.map((user) => <option value={user}>{user}</option>)}
+                              </select>
+                              </form>
+                            </p>
+                      </div>
+              </div>
+
+              <div className='RoleName-and-Dropdown'>
+                        <div className='RoleName'>
+                          <p>
+                            Actor A:
+                          </p>
+                        </div>
+
+                        <div className='dropdown'>
+                      <p>
+                      <form>
+                      <select className='selector' id="Actor1" onChange={handleRoleChange}>
+                          <option value={null}></option>
+                          {window.userList && window.userList.length>0 && window.userList.map((user) => <option value={user}>{user}</option>)}
+                          </select>
+                        </form>
+                      </p>
+                  </div>
+              </div>
+      </div>
+
+      <div className='column'>
+
+          <div className='RoleName-and-Dropdown'>
+                  <div className='RoleName'>
+                    <p>
+                      Person B:
+                    </p>
+                  </div>
+
+                  <div className='dropdown'>
+                      <p>
+                        <form>
+                        <select className='selector' id="Participant2" onChange={handleRoleChange}>
+                          <option value={null}></option>
+                          {window.userList && window.userList.length>0 && window.userList.map((user) => <option value={user}>{user}</option>)}
+                          </select>
+                          </form>
+                        </p>
+                  </div>
+          </div>
+
+          <div className='RoleName-and-Dropdown'>
+                    <div className='RoleName'>
+                      <p>
+                        Actor B:
+                      </p>
+                    </div>
+
+                <div className='dropdown'>
+                <p>
+                <form>
+                <select className='selector' id="Actor2" onChange={handleRoleChange}>                    
+                <option value={null}></option>
+                    {window.userList && window.userList.length>0 && window.userList.map((user) => <option value={user}>{user}</option>)}
+                    </select>
+                  </form>
+                </p>
+              </div>
+          </div>
+    </div>
+
+    
+
+    </div>  
+    {/* END ROLE assignments */}
+
+     {/* <!-- start / stop session --> */}
+     <div style={{textAlign: 'center',width:'100px', position:'absolute',right:'70px',bottom:'0px'}}>
+                    <label class="switch" style={{position:'relative', left:'30px',height:'30px', width:'60px',bottom:'-13px', cursor:'pointer'}}>
+                        <input type="checkbox" id='state' onChange={toggleSessionActive}/>
+                        <span class="slider round"></span>
+                    </label>
+                    <p style={{position:'relative', left:'30px', bottom: '0px'}}>Session active</p>
+                    </div>
+
+    </div>
+        

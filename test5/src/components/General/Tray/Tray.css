@@ -1,0 +1,122 @@
+.tray {
+  position:absolute;
+  flex: none;
+  height: 80px;
+  background-color: #f2f2f2;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  width:calc(100% - 20px);
+}
+
+.tray-with-sidebar {
+  position:absolute;
+  flex: none;
+  height: 80px;
+  background-color: #f2f2f2;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  width:calc(100% - 150px);
+  left:130px;
+}
+
+.status-display {
+  font-size:22px;
+  z-index: 900;
+  bottom: 15px;
+  height:42px;
+  /* overflow: hidden; */
+  visibility: visible;
+  flex-grow: 1;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform:translateX(-50%);
+  display:flex;
+}
+
+.my-view {
+  height:30px;
+  width:87px;
+  margin-right:82px;
+  overflow:visible;
+}
+
+.my-view-selector {
+  display:inline-block;
+  font-size:17px;
+  text-align: center;
+  outline:none;
+  position: absolute;
+  height:30px;
+  width:110px;
+  bottom:13px;
+  left:310px;
+  cursor:pointer;
+  background-color: #2196F3;
+  color:white;
+  border-radius:7px;
+  box-shadow:darkgrey -0px 1px 3px 2px;
+}
+
+.vertical-line {
+  border-left: 2px solid darkgrey;
+  height: 35px;
+  left: 50%;
+  margin-left:15px;
+  margin-right:15px
+}
+
+.display-card {
+  display:inline-block;
+  border-radius:5px;
+  padding-left:6px;
+  padding-right:6px;
+  box-shadow:lightgrey -0px 1px 3px 1px;
+}
+
+.paused {
+  background-color:white !important;
+  color:rgb(167, 0, 0);
+  width:70px;
+}
+
+.role {
+  background-color: white;
+  color: blue;
+}
+
+.active {
+  background-color: rgba(9, 208, 6, 0.7) !important;
+  color: black;
+  width:70px;
+  box-shadow:darkgreen -0px 1px 5px 1px;
+
+}
+
+
+/* selector button */
+.caret {
+  height:18px;
+  width:16px;
+text-align: center;
+font-size:20px;
+cursor:pointer;
+font-size:20px;
+cursor:pointer;
+font-weight: bold;
+/* disable selecting it by mistake */
+-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.caret:hover {
+background-color: rgb(227, 227, 227);
+
+}
+
+

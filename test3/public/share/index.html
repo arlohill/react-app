@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <title>Screenshare</title>
+    <script src="https://unpkg.com/@daily-co/daily-js"></script>
+  </head>
+  <body onload="main()">
+    <div id="local-controls">
+      <button
+        id="start-screenshare"
+        onclick="start()"
+      >
+        start screenshare
+      </button>
+      <hr />
+      <button id="stop-screenshare" onclick="stopScreenShare()">
+        stop screenshare
+      </button>
+      <hr />
+      <video id='video1' src='./TestVideo.mp4' onclick="toggleVideo()" style='width:200px'></video>
+    </div>
+
+    <script>
+      video = document.getElementById('video1');
+      // navigator.mediaDevices.enumerateDevices().then((e)=>{window.device23=e[23].deviceId});
+
+
+      async function main() {
+        // CHANGE THIS TO A ROOM WITHIN YOUR DAILY ACCOUNT
+        window.ROOM_URL = "https://secondbody.daily.co/react-test-room"
+
+  
+
+        
+      }
+
+      async function toggleVideo () {
+        if(video.paused) {
+          navigator.mediaDevices.enumerateDevices().then((e)=>{e[23]&&video.setSinkId(e[23].deviceId)});
+          // video.setSinkId(window.device23);
+          video.play();
+        }
+        else {
+          video.pause();
+        }
+      }
+
+      async function start() {
+
+        document.getElementById('start-screenshare').disabled=true;
+
+        if(typeof(callObject)!='undefined' && callObject._meetingState!='left-meeting') {
+          callObject.destroy();
+          return;
+        }
+
+        window.stream = video.captureStream();
+        // video.play();
+        window.video=video;
+
+        //create video canvas
+        canvas = document.createElement("canvas");
+        canvasCtx = canvas.getContext("2d");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        window.canvas=canvas;
+          
+
+          video.addEventListener('play', function () {
+            var $this = this; //cache
+            (function loop() {
+                if (!$this.paused && !$this.ended) {
+                    canvasCtx.drawImage($this, 0, 0);
+                    setTimeout(loop, 1000 / 30); // drawing at 30fps
+                }
+            }
+            )();
+            
+        }, 0);
+
+       canvasMediaStream = canvas.captureStream(25);
+
+        ///end video canvas section
+
+        ////////////// START AUDIOCONTEXT SECTION/////////////////////////////////
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let audioSourceNode = audioCtx.createMediaStreamSource(window.stream);
+        window.destinationL = audioCtx.createMediaStreamDestination();
+        let destinationR = audioCtx.createMediaStreamDestination();
+
+        //nodes
+        const splitterNode = new ChannelSplitterNode(audioCtx, { numberOfOutputs: 2 });
+
+        //split audio source into 2 channels: 0 (left), and 1(right)
+        audioSourceNode.connect(splitterNode)
+
+        //adjust channels separately
+        splitterNode.connect(window.destinationL, 0); // connect Left channel to its  node
+        splitterNode.connect(destinationR, 1); // connect Right channel to its  node
+        
+
+        // window.leftTrack = window.destinationL.stream.getAudioTracks()[0];
+        window.rightTrack = destinationR.stream.getAudioTracks()[0];
+        ////////////// END AUDIOCONTEXT SECTION/////////////////////////////////
+
+     
+        window.callObject = DailyIframe.createCallObject({
+          // audioSource: window.localCam.getAudioTracks()[0],
+          // videoSource: window.localCam.getVideoTracks()[0],
+          audioSource: window.rightTrack,
+          videoSource: false,
+          dailyConfig: {
+            experimentalChromeVideoMuteLightOff: true,
+          },
+        });
+
+        callObject.on("track-started", displayVideo);
+        callObject.on("track-stopped", destroyVideo);
+        callObject.on("joined-meeting",()=>{
+          callObject.setLocalVideo(false); 
+          callObject.setLocalAudio(true);
+          callObject.setUserName('InvisibleScreenShareWidgetDELETE')});
+
+        await callObject.join({ url: window.ROOM_URL });
+
+        setTimeout(startScreenShareWithCustomTrack,500);
+
+      }
+
+ 
+        
+
+        async function startScreenShareWithCustomTrack() {
+
+          
+
+
+          
+ 
+        screenShareMedia = new MediaStream([canvasMediaStream.getVideoTracks()[0],window.destinationL.stream.getAudioTracks()[0]]);
+          window.screenShareMedia=screenShareMedia;
+
+        callObject.startScreenShare({
+          // share getDisplayMedia stream
+          // mediaStream: window.screenStream,
+          mediaStream: screenShareMedia,
+            });
+      }
+
+      function stopScreenShare() {
+        callObject.stopScreenShare();
+        video.pause();
+        callObject.destroy();
+        document.getElementById('start-screenshare').disabled=false;
+      }
+
+
+      function displayVideo(evt) {
+        console.log(evt);
+        if (!(evt.track.kind === "video")) {
+          return;
+        }
+        let videosDiv = document.getElementById("videos");
+        let videoEl = document.createElement("video");
+        videosDiv.appendChild(videoEl);
+        videoEl.style.width = "200px";
+        videoEl.srcObject = new MediaStream([evt.track]);
+        videoEl.play();
+      }
+
+      function destroyVideo(evt) {
+        let vids = document.getElementsByTagName("video");
+        for (let vid of vids) {
+          if (
+            vid.srcObject &&
+            vid.srcObject.getVideoTracks()[0] === evt.track
+          ) {
+            vid.remove();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

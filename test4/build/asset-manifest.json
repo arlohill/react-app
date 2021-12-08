@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7eedc594.chunk.css",
+    "main.js": "/static/js/main.c2e5316a.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.cef06927.js",
+    "static/js/2.f027c059.chunk.js": "/static/js/2.f027c059.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.2c3c782f6a6462f35bd74ad9c1f36833.js": "/precache-manifest.2c3c782f6a6462f35bd74ad9c1f36833.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.f027c059.chunk.js.LICENSE.txt": "/static/js/2.f027c059.chunk.js.LICENSE.txt",
+    "static/media/AdminPanel.css": "/static/media/Apercu Pro Light.bb2d8540.otf",
+    "static/media/LivestormSecondBody.png": "/static/media/LivestormSecondBody.0bc4f703.png",
+    "static/media/record.svg": "/static/media/record.1765a274.svg",
+    "static/media/recording.svg": "/static/media/recording.dfc29629.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cef06927.js",
+    "static/js/2.f027c059.chunk.js",
+    "static/css/main.7eedc594.chunk.css",
+    "static/js/main.c2e5316a.chunk.js"
+  ]
+}

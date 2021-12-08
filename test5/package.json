@@ -1,0 +1,45 @@
+{
+  "name": "react-demo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@daily-co/daily-js": "^0.21.0",
+    "@mux/mux-node": "^3.3.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.24.0",
+    "bowser": "^2.11.0",
+    "hls.js": "^1.1.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "3.4.0",
+    "serve": "^11.3.0",
+    "use-deep-compare": "^1.1.0",
+    "video-react": "^0.14.1"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "netlify-build": "sed -i.bak s/DAILY_API_KEY_PLACEHOLDER/${DAILY_API_KEY}/g netlify.toml && npm run build",
+    "start": "react-scripts start",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

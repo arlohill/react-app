@@ -1,0 +1,22 @@
+.name {
+  display: inline-block;
+  font-size:17px;
+  border-radius: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  box-shadow: rgb(195, 195, 195) 0px 0px 2px 1px;
+  border: 1px solid rgb(142, 142, 142);
+  background-color:rgb(186, 212, 242);
+  width:fit-content;
+}
+
+.name-container {
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto;
+  align-items: center;
+  margin-top:5px;
+  gap:7px;
+}

@@ -1,0 +1,247 @@
+.sidebar-toggle {
+  position:absolute;
+  width:25px;
+  height:30px;
+  top:50%;
+  left:1px;
+  cursor: pointer;
+  z-index: 99999;
+  background-color:whitesmoke;
+  border-radius: 0px 5px 5px 0px;
+  padding-top:5px;
+  opacity: 1;
+}
+
+/* .sidebar-toggle:hover {
+  background-color:white;
+} */
+
+.call {
+  position: relative; /* To make it a "positioned" container so children layout works */
+  height: calc(100% - 80px); /* Space for the tray */
+  background-color: rgb(216, 225, 233);
+  left:0;
+  width:100%;
+  transition: 850ms;
+}
+
+.call-with-sidebar {
+  position: relative; /* To make it a "positioned" container so children layout works */
+  height: calc(100% - 80px); /* Space for the tray */
+  background-color: rgb(216, 225, 233);
+  width:calc(100% - 140px);
+  left:140px;
+  transition: 350ms;
+}
+
+.large-tiles {
+  /* height: calc(100% - 132.5px);
+  width: 80%; */
+  height:calc(100% - 2px);
+  width:calc(100% - 2px); 
+  /* aspect-ratio: 16/9; */
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: grid;
+  align-items: center;
+  overflow-y: hidden;
+  gap:3px 1px;
+  padding:1px;
+}
+
+.large-tiles.screenshare {
+ /* border-radius: 50px; */
+ height:calc(100% - 145px);
+ transition: 850ms;
+ box-shadow: white 0px 0px 1px 1px;
+}
+
+.large-tiles.screenshare.with-sidebar {
+  /* border-radius: 50px; */
+  height:calc(100% - 145px);
+  width: calc(100% + 140px);
+  transition: 350ms;
+  box-shadow: white 0px 0px 1px 1px;
+
+
+ }
+
+
+
+.large-tiles > .tile > video {
+  border-radius: 20px;
+}
+
+
+/* 3- or 4-person call */
+.large-tiles.count-3, .large-tiles.count-4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.large-tiles.count-4 > .tile.large:nth-child(1), .large-tiles.count-3 > .tile.large:nth-child(1){
+  order:3;
+}
+.large-tiles.count-4 > .tile.large:nth-child(2), .large-tiles.count-3 > .tile.large:nth-child(2){
+  order:1;
+}
+.large-tiles.count-4 > .tile.large:nth-child(3), .large-tiles.count-3 > .tile.large:nth-child(3){
+  order:2;
+}
+.large-tiles.count-4 > .tile.large:nth-child(4){
+  order:4;
+}
+
+
+
+/* 5- or 6-person call */
+.large-tiles.count-5, .large-tiles.count-6 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.large-tiles.count-5 > .tile.large:nth-child(1), .large-tiles.count-6 > .tile.large:nth-child(1){
+  order:4;
+}
+.large-tiles.count-5 > .tile.large:nth-child(2), .large-tiles.count-6 > .tile.large:nth-child(2){
+  order:1;
+}
+.large-tiles.count-5 > .tile.large:nth-child(3), .large-tiles.count-6 > .tile.large:nth-child(3){
+  order:2;
+}
+.large-tiles.count-5 > .tile.large:nth-child(4), .large-tiles.count-6 > .tile.large:nth-child(4){
+  order:3;
+}
+.large-tiles.count-5 > .tile.large:nth-child(5), .large-tiles.count-6 > .tile.large:nth-child(5){
+  order:5;
+}
+
+.large-tiles.count-6 > .tile.large:nth-child(6){
+  order:6;
+}
+
+/* 7- or 8 or 9-person call */
+.large-tiles.count-7, .large-tiles.count-8,.large-tiles.count-9 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.large-tiles.count-7 > .tile.large:nth-child(1), .large-tiles.count-8 > .tile.large:nth-child(1), .large-tiles.count-9 > .tile.large:nth-child(1){
+  order:7;
+}
+.large-tiles.count-7 > .tile.large:nth-child(2), .large-tiles.count-8 > .tile.large:nth-child(2),  .large-tiles.count-9 > .tile.large:nth-child(2){
+  order:1;
+}
+.large-tiles.count-7 > .tile.large:nth-child(3), .large-tiles.count-8 > .tile.large:nth-child(3),  .large-tiles.count-9 > .tile.large:nth-child(3){
+  order:2;
+}
+.large-tiles.count-7 > .tile.large:nth-child(4), .large-tiles.count-8 > .tile.large:nth-child(4),  .large-tiles.count-9 > .tile.large:nth-child(4){
+  order:3;
+}
+.large-tiles.count-7 > .tile.large:nth-child(5), .large-tiles.count-8 > .tile.large:nth-child(5),  .large-tiles.count-9 > .tile.large:nth-child(5){
+  order:4;
+}
+.large-tiles.count-7 > .tile.large:nth-child(6), .large-tiles.count-8 > .tile.large:nth-child(6),  .large-tiles.count-9 > .tile.large:nth-child(6){
+  order:5;
+}
+.large-tiles.count-7 > .tile.large:nth-child(7), .large-tiles.count-8 > .tile.large:nth-child(7), .large-tiles.count-9 > .tile.large:nth-child(7){
+  order:6;
+}
+.large-tiles.count-8 > .tile.large:nth-child(8), .large-tiles.count-9 > .tile.large:nth-child(8){
+  order:8;
+}
+.large-tiles.count-9 > .tile.large:nth-child(9), .large-tiles.count-9 > .tile.large:nth-child(9){
+  order:9;
+}
+
+/* 10- or 11- or 12-person call */
+.large-tiles.count-10, .large-tiles.count-11,.large-tiles.count-12 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.large-tiles.count-10 > .tile.large:nth-child(1), .large-tiles.count-11 > .tile.large:nth-child(1), .large-tiles.count-12 > .tile.large:nth-child(1){
+  order:9;
+}
+.large-tiles.count-10 > .tile.large:nth-child(2), .large-tiles.count-11 > .tile.large:nth-child(2),  .large-tiles.count-12 > .tile.large:nth-child(2){
+  order:1;
+}
+.large-tiles.count-10 > .tile.large:nth-child(3), .large-tiles.count-11 > .tile.large:nth-child(3),  .large-tiles.count-12 > .tile.large:nth-child(3){
+  order:2;
+}
+.large-tiles.count-10 > .tile.large:nth-child(4), .large-tiles.count-11 > .tile.large:nth-child(4),  .large-tiles.count-12 > .tile.large:nth-child(4){
+  order:3;
+}
+.large-tiles.count-10 > .tile.large:nth-child(5), .large-tiles.count-11 > .tile.large:nth-child(5),  .large-tiles.count-12 > .tile.large:nth-child(5){
+  order:4;
+}
+.large-tiles.count-10 > .tile.large:nth-child(6), .large-tiles.count-11 > .tile.large:nth-child(6),  .large-tiles.count-12 > .tile.large:nth-child(6){
+  order:5;
+}
+.large-tiles.count-10 > .tile.large:nth-child(7), .large-tiles.count-11 > .tile.large:nth-child(7), .large-tiles.count-12 > .tile.large:nth-child(7){
+  order:6;
+}
+.large-tiles.count-10 > .tile.large:nth-child(8), .large-tiles.count-11 > .tile.large:nth-child(8), .large-tiles.count-12 > .tile.large:nth-child(8){
+  order:7;
+}
+.large-tiles.count-10 > .tile.large:nth-child(9), .large-tiles.count-11 > .tile.large:nth-child(9), .large-tiles.count-12 > .tile.large:nth-child(9){
+  order:8;
+}
+.large-tiles.count-10 > .tile.large:nth-child(10), .large-tiles.count-11 > .tile.large:nth-child(10), .large-tiles.count-12 > .tile.large:nth-child(10){
+  order:10;
+}
+.large-tiles.count-11 > .tile.large:nth-child(11), .large-tiles.count-12 > .tile.large:nth-child(11){
+  order:11;
+}
+.large-tiles.count-12 > .tile.large:nth-child(12){
+  order:12;
+}
+
+/* 13 to 16 person call */
+.large-tiles.count-13, .large-tiles.count-14,.large-tiles.count-15, .large-tiles.count-16{
+  /* grid-auto-columns: minmax(200px, auto);
+  grid-auto-rows: minmax(60px, auto); */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+/* 17 to 20 person call */
+.large-tiles.count-17,.large-tiles.count-18, .large-tiles.count-19, .large-tiles.count-20{
+  /* grid-auto-columns: minmax(200px, auto);
+  grid-auto-rows: minmax(60px, auto); */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+/* 21 to 25 person call */
+.large-tiles.count-21, .large-tiles.count-22, .large-tiles.count-23,.large-tiles.count-24, .large-tiles.count-25{
+  /* grid-auto-columns: minmax(200px, auto);
+  grid-auto-rows: minmax(60px, auto); */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+/* .large-tiles.count-5, .large-tiles.count-6 > .tile .background {
+  padding-top: 49.5%; 
+} */
+
+
+
+ 
+
+
+.small-tiles {
+  height: 132.5px; /* Video height + 10px padding either side */
+  display: flex;
+  align-items: center;
+  position:absolute;
+  width:100%;
+  overflow-y:scroll;
+  flex-wrap:wrap;
+  bottom:10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

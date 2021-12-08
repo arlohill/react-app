@@ -1,0 +1,16 @@
+.nav-bar {
+    width:100%;
+    background-color: rgb(43, 43, 43);
+    height:58px;
+}
+
+
+.router-button {
+    color:rgb(155, 155, 155);
+    outline:none;
+
+}
+
+.router-button:hover {
+    color:#17b2ff;
+}
